@@ -1,6 +1,9 @@
 #include <iostream>
 #include <stdlib.h>
 
+int save(){
+}
+
 int main(){
  int i;
  i = 0;
