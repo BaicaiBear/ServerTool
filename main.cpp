@@ -25,7 +25,19 @@ int main(){
     system("yes");
   }
   else if(a=='5'){
-    system("./*updata.sh");
+   if(system("mv nukkit*.jar nukkit.jar.bak")){
+    cout<<"备份原核心成功";
+   }
+   else{
+    cout<<"备份原核心失败，更新终止";
+    break;break;
+   }
+   ststem("mkdir /tmp/nukkit");
+   cout<<"创建临时目录成功";
+   system("wget -r -p -np -k -P ~/tmp/nukkit/ http://ci.mengcraft.com:8080/job/nukkit/lastSuccessfulBuild/artifact/target/nukkit-1.0-SNAPSHOT.jar");
+   system("mv /tmp/nukkit/nukkit-1.0-SNAPSHOT.jar nukkit.jar");
+   system("rm -rf /tmp/nukkit")
+    //system("./*updata.sh");
   }
   else if(a=='6'){
    int r=1;
