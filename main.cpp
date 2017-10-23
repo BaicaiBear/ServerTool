@@ -26,16 +26,33 @@ int main(){
   }
   else if(a=='5'){
    if(system("mv nukkit*.jar nukkit.jar.bak")){
-    cout<<"备份原核心成功";
+    cout<<"备份原核心成功\n";
    }
    else{
-    cout<<"备份原核心失败，更新终止";
+    cout<<"备份原核心失败，请检查权限，更新终止";
     break;break;
    }
-   ststem("mkdir /tmp/nukkit");
-   cout<<"创建临时目录成功";
-   system("wget -r -p -np -k -P ~/tmp/nukkit/ http://ci.mengcraft.com:8080/job/nukkit/lastSuccessfulBuild/artifact/target/nukkit-1.0-SNAPSHOT.jar");
-   system("mv /tmp/nukkit/nukkit-1.0-SNAPSHOT.jar nukkit.jar");
+   if(ststem("mkdir /tmp/nukkit")){
+    cout<<"创建临时目录成功\n";
+   }
+   else{
+    cout<<"创建临时目录失败，请检查权限，更新终止";
+    break;break;
+   }
+   if((system("wget -r -p -np -k -P ~/tmp/nukkit/ http://ci.mengcraft.com:8080/job/nukkit/lastSuccessfulBuild/artifact/target/nukkit-1.0-SNAPSHOT.jar")){
+    cout<<"下载核心成功\n";
+   }
+   else{
+    cout<<"下载核心失败，请检查网络连接，更新终止";
+    break;break;
+   }
+   if(system("mv /tmp/nukkit/nukkit-1.0-SNAPSHOT.jar nukkit.jar")){
+    cout<<"移动核心成功\n";
+   }
+   else{
+    cout<<"移动核心失败，请检查权限，更新终止";
+    break;break;
+   }
    system("rm -rf /tmp/nukkit")
     //system("./*updata.sh");
   }
