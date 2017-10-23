@@ -32,7 +32,7 @@ int main(){
     cout<<"备份原核心失败，请检查权限，更新终止";
     break;break;
    }
-   if(ststem("mkdir /tmp/nukkit")){
+   if(system("mkdir /tmp/nukkit")){
     cout<<"创建临时目录成功\n";
    }
    else{
