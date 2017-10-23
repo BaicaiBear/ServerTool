@@ -53,7 +53,14 @@ int main(){
     cout<<"移动核心失败，请检查权限，更新终止";
     break;break;
    }
-   system("rm -rf /tmp/nukkit")
+   if(system("rm -rf /tmp/nukkit")){
+    cout<<"删除临时目录成功\n";
+   }
+   else{
+    cout<<"更新进程完成，但是临时目录没有删除，请手动删除/tmp/nukkit目录";
+    break;break;
+   }
+   cout<<"更新成功！";
     //system("./*updata.sh");
   }
   else if(a=='6'){
